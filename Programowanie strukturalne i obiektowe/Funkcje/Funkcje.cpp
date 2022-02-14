@@ -82,6 +82,16 @@ Wyświetl wszystkie informacje zakodowane w numerze PESEL.
 Numer pobierz od uzytkownika z klawiatury.
 */
 
+//funkcja zwraca wartość liczbową dla danych znaków
+int KonwertujZnakiNaLiczbe(char znakDziesiatek, char znakJednostek)
+{
+    int cyfraDziesiatek = (int)znakDziesiatek - 48;
+    int cyfraJednostek = (int)znakJednostek - 48;
+
+    int wynik = cyfraDziesiatek * 10 + cyfraJednostek;
+    return wynik;
+}
+
 //funkcja sprawdza numer PESEL
 // jako parametr przyjmuje numer PESEL
 //zwraca wartość:
@@ -99,6 +109,18 @@ bool SprawdzNumerPesel(std::string numer)
         if (numer[i] < '0' || numer[i] > '9')
             return false;
     }
+
+    int miesiac = KonwertujZnakiNaLiczbe(numer[2], numer[3]);
+
+    if ( miesiac > 1  
+        ||(miesiac > 12 && miesiac < 21) 
+        || (miesiac > 32 && miesiac < 41) 
+        || (miesiac > 52 && miesiac < 61)
+        || (miesiac > 72 && miesiac < 81)
+        || miesiac > 92)
+        return false;
+
+    int dzien = KonwertujZnakiNaLiczbe(numer[4], numer[5]);
 
     //.....
 
