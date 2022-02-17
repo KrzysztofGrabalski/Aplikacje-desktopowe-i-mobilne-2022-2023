@@ -122,6 +122,68 @@ bool SprawdzNumerPesel(std::string numer)
 
     int dzien = KonwertujZnakiNaLiczbe(numer[4], numer[5]);
 
+    //wszystkie miesiące z 31 dniami
+    if (dzien > 31)
+        return false;
+
+    if (dzien < 1)
+        return false;
+
+    //luty
+    if (miesiac == 82 || miesiac == 2 || miesiac == 22 || miesiac == 42 || miesiac == 62)
+    {
+        //zostawiamy - dopiszemy
+        //dla roku przestępnego
+        if (dzien > 29)
+            return false;
+
+        //pozostałe lata
+        //if (dzien > 28)
+        //    return false;
+    }
+    //kwiecien
+    if (miesiac == 86 || miesiac == 6 || miesiac == 26 || miesiac == 46 || miesiac == 66)
+    {
+        if (dzien > 30)
+            return false;
+    }
+
+    //czerwiec
+    if (miesiac == 84 || miesiac == 4 || miesiac == 24 || miesiac == 44 || miesiac == 64)
+    {
+        if (dzien > 30)
+            return false;
+    }
+
+    //wrzesień
+    if (miesiac == 89 || miesiac == 9 || miesiac == 29 || miesiac == 49 || miesiac == 69)
+    {
+        if (dzien > 30)
+            return false;
+    }
+
+    //listopad
+    if (miesiac == 91 || miesiac == 11 || miesiac == 31 || miesiac == 51 || miesiac == 71)
+    {
+        if (dzien > 30)
+            return false;
+    }
+
+
+    int iloczyn0 = KonwertujZnakiNaLiczbe('0', numer[0]) * 1;
+    int iloczyn1 = KonwertujZnakiNaLiczbe('0', numer[1]) * 3;
+    int iloczyn2 = KonwertujZnakiNaLiczbe('0', numer[2]) * 7;
+    int iloczyn3 = KonwertujZnakiNaLiczbe('0', numer[3]) * 9;
+    int iloczyn4 = KonwertujZnakiNaLiczbe('0', numer[4]) * 1;
+    int iloczyn5 = KonwertujZnakiNaLiczbe('0', numer[5]) * 3;
+    int iloczyn6 = KonwertujZnakiNaLiczbe('0', numer[6]) * 7;
+    int iloczyn7 = KonwertujZnakiNaLiczbe('0', numer[7]) * 9;
+    int iloczyn8 = KonwertujZnakiNaLiczbe('0', numer[8]) * 1;
+    int iloczyn9 = KonwertujZnakiNaLiczbe('0', numer[9]) * 3;
+
+    int suma = iloczyn0 + iloczyn1 + iloczyn2 + iloczyn3 + iloczyn4 + iloczyn5 + iloczyn6 + iloczyn7 + iloczyn8 + iloczyn9;
+
+
     //.....
 
     return true;
