@@ -112,7 +112,7 @@ bool SprawdzNumerPesel(std::string numer)
 
     int miesiac = KonwertujZnakiNaLiczbe(numer[2], numer[3]);
 
-    if ( miesiac > 1  
+    if ( miesiac < 1  
         ||(miesiac > 12 && miesiac < 21) 
         || (miesiac > 32 && miesiac < 41) 
         || (miesiac > 52 && miesiac < 61)
@@ -182,9 +182,16 @@ bool SprawdzNumerPesel(std::string numer)
     int iloczyn9 = KonwertujZnakiNaLiczbe('0', numer[9]) * 3;
 
     int suma = iloczyn0 + iloczyn1 + iloczyn2 + iloczyn3 + iloczyn4 + iloczyn5 + iloczyn6 + iloczyn7 + iloczyn8 + iloczyn9;
+    int reszta_z_dzielenia = suma % 10;
+    int obliczonaCyfraKontrolna;
+    if (reszta_z_dzielenia == 0)
+        obliczonaCyfraKontrolna = 0;
+    else
+        obliczonaCyfraKontrolna = 10 - reszta_z_dzielenia;
 
-
-    //.....
+    int cyfraKontrolna = KonwertujZnakiNaLiczbe('0', numer[10]);
+    if (obliczonaCyfraKontrolna != cyfraKontrolna)
+        return false;
 
     return true;
 }
