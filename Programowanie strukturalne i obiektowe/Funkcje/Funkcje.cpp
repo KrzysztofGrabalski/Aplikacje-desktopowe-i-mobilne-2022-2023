@@ -401,8 +401,14 @@ void main()
 
 	//TestFunkcjiParametryzowanej();
 	//TestFunkcjiZwracajacejDane();
-	InformacjaNumerPesel();
+	//InformacjaNumerPesel();
 
+	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1Ab", 16)<<'\n';
+	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1010", 2) << '\n';
+	std::string liczbaStr;
+	int system;
+	std::cin >> liczbaStr >> system;
+	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10(liczbaStr,system)<< '\n';
 }
 
 
