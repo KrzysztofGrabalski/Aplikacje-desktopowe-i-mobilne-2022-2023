@@ -109,7 +109,7 @@ bool SprawdzNumerPesel(std::string numer)
 		if (numer[i] < '0' || numer[i] > '9')
 			return false;
 	}
-
+	char znak = numer[2];
 	int miesiac = KonwertujZnakiNaLiczbe(numer[2], numer[3]);
 
 	if (miesiac < 1
@@ -291,7 +291,93 @@ void InformacjaNumerPesel()
 
 }
 
+int KonwertujStringNaLiczbe(std::string liczbaStr)
+{
+	int wynik = 0;
+	//"10587"
+	int mnoznik = 1;
+	for (int i = liczbaStr.length() - 1; i >= 0; i--)
+	{
+		int liczba = (int)liczbaStr[i] - 48;
+		//wynik = wynik + liczba * mnoznik;
+		wynik += liczba * mnoznik;
+		//mnoznik = mnoznik * 10;
+		mnoznik *= 10;
+		//dodatkowa informacja o operatorze przypisania
+		//wynik = wynik * liczba + 10;
+		//wynik = wynik * (liczba + 10);
+		//wynik *= liczba + 10;
+		//i = i + 1;
+		//i += 1;
+		//i++;
+	}
 
+	return wynik;
+}
+
+int KonwertujString16NaLiczbe10(std::string liczbaStr)
+{
+	int wynik = 0;
+	//"1AF8"
+	int mnoznik = 1;
+	for (int i = liczbaStr.length() - 1; i >= 0; i--)
+	{
+		int poprawka = 0;
+		if (liczbaStr[i] >= '0' && liczbaStr[i] <= '9')
+		{
+			poprawka = 48;
+			//poprawka = (int)'0';
+		}
+		if (liczbaStr[i] >= 'A' && liczbaStr[i] <= 'F')
+		{
+			//poprawka = 55;
+			poprawka = (int)'A' - 10;
+		}
+		if (liczbaStr[i] >= 'a' && liczbaStr[i] <= 'f')
+		{
+			//poprawka = 87;
+			poprawka = (int)'a' - 10;
+		}
+
+		int liczba = (int)liczbaStr[i] - poprawka;
+		wynik += liczba * mnoznik;
+		mnoznik *= 16;
+	}
+
+	return wynik;
+}
+
+int KonwertujStringLiczbaSystemMax58NaLiczbe10(std::string liczbaStr, int system)
+{
+	int wynik = 0;
+	//"1AF8"
+	int mnoznik = 1;
+	for (int i = liczbaStr.length() - 1; i >= 0; i--)
+	{
+		int poprawka = 0;
+		if (liczbaStr[i] >= '0' && liczbaStr[i] <= '9')
+		{
+			poprawka = 48;
+			//poprawka = (int)'0';
+		}
+		if (liczbaStr[i] >= 'A' && liczbaStr[i] <= 'Z')
+		{
+			//poprawka = 55;
+			poprawka = (int)'A' - 10;
+		}
+		if (liczbaStr[i] >= 'a' && liczbaStr[i] <= 'z')
+		{
+			//poprawka = 87;
+			poprawka = (int)'a' - 35;
+		}
+
+		int liczba = (int)liczbaStr[i] - poprawka;
+		wynik += liczba * mnoznik;
+		mnoznik *= system;
+	}
+
+	return wynik;
+}
 
 void main()
 {
