@@ -403,7 +403,7 @@ void main()
 	//TestFunkcjiZwracajacejDane();
 	//InformacjaNumerPesel();
 
-	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1Ab", 16)<<'\n';
+	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1AB", 16)<<'\n';
 	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1010", 2) << '\n';
 	std::string liczbaStr;
 	int system;
