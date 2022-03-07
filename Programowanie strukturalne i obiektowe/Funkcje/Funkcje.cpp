@@ -90,6 +90,8 @@ int KonwertujZnakiNaLiczbe(char znakDziesiatek, char znakJednostek)
 
 	int wynik = cyfraDziesiatek * 10 + cyfraJednostek;
 	return wynik;
+
+	//return ((int)znakDziesiatek - 48) * 10 + (int)znakJednostek - 48;
 }
 
 //funkcja sprawdza numer PESEL
@@ -379,6 +381,30 @@ int KonwertujStringLiczbaSystemMax58NaLiczbe10(std::string liczbaStr, int system
 	return wynik;
 }
 
+
+/*
+ Zadanie
+ Zaszyfruj (deszyfruj) tekst podany przez użytkownika
+ za pomocą szyfru Cezara.
+ */
+
+std::string PobierzTekstJawny()
+{
+	std::string tekstJawny;
+	std::cout << "Podaj tekst do zaszyfrowania\n";
+	std::cin >> tekstJawny;
+	return tekstJawny;
+}
+
+void ZadanieSzyfrCezara()
+{
+	std::string tj = PobierzTekstJawny();
+
+
+
+
+}
+
 void main()
 {
 	/*PobierzWyswietlLiczbe();
@@ -403,12 +429,14 @@ void main()
 	//TestFunkcjiZwracajacejDane();
 	//InformacjaNumerPesel();
 
-	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1AB", 16)<<'\n';
+	/*std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1AB", 16) << '\n';
 	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10("1010", 2) << '\n';
 	std::string liczbaStr;
 	int system;
 	std::cin >> liczbaStr >> system;
-	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10(liczbaStr,system)<< '\n';
+	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10(liczbaStr,system)<< '\n';*/
+
+	ZadanieSzyfrCezara();
 }
 
 
