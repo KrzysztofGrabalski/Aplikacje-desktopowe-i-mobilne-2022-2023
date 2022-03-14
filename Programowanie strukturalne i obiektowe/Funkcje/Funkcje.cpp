@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <math.h>
+#include <string>
 
 //definicja funkcji
 /*
@@ -392,16 +393,56 @@ std::string PobierzTekstJawny()
 {
 	std::string tekstJawny;
 	std::cout << "Podaj tekst do zaszyfrowania\n";
-	std::cin >> tekstJawny;
+	//std::cin >> tekstJawny;
+	std::getline(std::cin, tekstJawny);
 	return tekstJawny;
 }
+
+std::string SzyfrujAlgorytmCezara(std::string szyfrowanyTekst)
+{
+	for (int i = 0; i < szyfrowanyTekst.length(); i++)
+	{
+		if ((szyfrowanyTekst[i] >= 'A' && szyfrowanyTekst[i] <= 'Z')
+			|| (szyfrowanyTekst[i] >= 'a' && szyfrowanyTekst[i] <= 'z'))
+		{
+			szyfrowanyTekst[i] = szyfrowanyTekst[i] + 3;
+			//korekta ponieważ wyszliśmy poza zakres liter alfabetu
+			if (szyfrowanyTekst[i] >= 123 
+			|| (szyfrowanyTekst[i] >= 91 && szyfrowanyTekst[i] <= 93))
+				szyfrowanyTekst[i] = szyfrowanyTekst[i] - 26;
+		}
+	}
+	return szyfrowanyTekst;
+}
+
+std::string DeszyfrujAlgorytmCezara(std::string zaszyfrowanyTekst)
+{
+	for (int i = 0; i < zaszyfrowanyTekst.length(); i++)
+	{
+		if ((zaszyfrowanyTekst[i] >= 'A' && zaszyfrowanyTekst[i] <= 'Z')
+			|| (zaszyfrowanyTekst[i] >= 'a' && zaszyfrowanyTekst[i] <= 'z'))
+		{
+			zaszyfrowanyTekst[i] = zaszyfrowanyTekst[i] - 3;
+			//korekta ponieważ wyszliśmy poza zakres liter alfabetu
+			if (zaszyfrowanyTekst[i] < 65
+				|| (zaszyfrowanyTekst[i] >= 94 && zaszyfrowanyTekst[i] <= 96))
+				zaszyfrowanyTekst[i] = zaszyfrowanyTekst[i] + 26;
+		}
+	}
+	return zaszyfrowanyTekst;
+}
+//ABCDEFGHIJKLMNOPRSTUWXYZ
+//DEFGHIJKLMNOPRSTUWXYZABC
 
 void ZadanieSzyfrCezara()
 {
 	std::string tj = PobierzTekstJawny();
+	std::string zaszyfrowanyTekst = SzyfrujAlgorytmCezara(tj);
+	std::string odszyfrowanyTekst = DeszyfrujAlgorytmCezara(zaszyfrowanyTekst);
 
-
-
+	std::cout << "Tekst jawny: \t\t" << tj << "\n";
+	std::cout << "Tekst zaszyfrowany: \t" << zaszyfrowanyTekst << "\n";
+	std::cout << "Tekst odszyfrowany: \t" << odszyfrowanyTekst << "\n";
 
 }
 
