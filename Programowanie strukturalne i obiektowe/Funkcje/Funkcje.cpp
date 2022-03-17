@@ -446,6 +446,47 @@ void ZadanieSzyfrCezara()
 
 }
 
+
+/*
+ Zadanie
+ Wczytać liczbę od uzytkownika i obliczyć silnię tej liczby.
+ */
+
+int Silnia(int liczba)
+{
+	int aktualnyIloczyn = 1;
+	for( int i = 2; i <= liczba ; i++)
+	{
+		//aktualnyIloczyn = aktualnyIloczyn * i;
+		aktualnyIloczyn *= i;
+	}
+	return aktualnyIloczyn;
+}
+
+int SilniaV2(int liczba)
+{
+	int wynik;
+
+	if (liczba == 1)
+		wynik = 1;
+	else
+		wynik = SilniaV2(liczba - 1) * liczba;
+
+	return wynik;
+}
+
+void ZadanieSlinia()
+{
+	std::cout << "Podaj liczbe\n";
+	int liczbaNaturalna;
+	std::cin >> liczbaNaturalna;
+
+	int wynik = SilniaV2(liczbaNaturalna);
+	std::cout << "Slinia liczby " << liczbaNaturalna << "! = " << wynik << "\n";
+
+}
+
+
 void main()
 {
 	/*PobierzWyswietlLiczbe();
@@ -477,7 +518,8 @@ void main()
 	std::cin >> liczbaStr >> system;
 	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10(liczbaStr,system)<< '\n';*/
 
-	ZadanieSzyfrCezara();
+	//ZadanieSzyfrCezara();
+	ZadanieSlinia();
 }
 
 
