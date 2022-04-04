@@ -407,8 +407,8 @@ std::string SzyfrujAlgorytmCezara(std::string szyfrowanyTekst)
 		{
 			szyfrowanyTekst[i] = szyfrowanyTekst[i] + 3;
 			//korekta ponieważ wyszliśmy poza zakres liter alfabetu
-			if (szyfrowanyTekst[i] >= 123 
-			|| (szyfrowanyTekst[i] >= 91 && szyfrowanyTekst[i] <= 93))
+			if (szyfrowanyTekst[i] >= 123
+				|| (szyfrowanyTekst[i] >= 91 && szyfrowanyTekst[i] <= 93))
 				szyfrowanyTekst[i] = szyfrowanyTekst[i] - 26;
 		}
 	}
@@ -455,7 +455,7 @@ void ZadanieSzyfrCezara()
 int Silnia(int liczba)
 {
 	int aktualnyIloczyn = 1;
-	for( int i = 2; i <= liczba ; i++)
+	for (int i = 2; i <= liczba; i++)
 	{
 		//aktualnyIloczyn = aktualnyIloczyn * i;
 		aktualnyIloczyn *= i;
@@ -485,6 +485,42 @@ void ZadanieSlinia()
 	std::cout << "Slinia liczby " << liczbaNaturalna << "! = " << wynik << "\n";
 
 }
+
+/*
+
+
+Napisz funkcję, która przyjmie jako parametr liczbę
+i wyświetli wszystkie liczby od 1 do tej liczby.
+*
+Napisz funkcję która jako parametry przyjmie dwie liczby
+i zwróci wiekszą z nich.
+*
+Napisz funkcję która jako parametry przyjmie trzy liczby
+i zwróci największą z nich.
+*
+Napisz funkcję, która jako parametr przyjmie tekst
+i wyświetli go od tyłu.
+
+Napisz funkcję która jako parametr przyjmie dwie liczby
+i wyświetli je w kolejności rosnącej.
+
+Napisz funkcję która jako parametr przyjmie trzy liczby
+i wyświetli je w kolejności rosnącej.
+
+ */
+void funkcjaPrzykladowa(int liczba)
+{
+	std::cout << "Podana liczba to:" << liczba;
+}
+
+void Test1()
+{
+	std::cout << "Podaj liczbe\n";
+	int liczba;
+	std::cin >> liczba;
+	funkcjaPrzykladowa(liczba);
+}
+
 
 
 void main()
@@ -519,7 +555,9 @@ void main()
 	std::cout << KonwertujStringLiczbaSystemMax58NaLiczbe10(liczbaStr,system)<< '\n';*/
 
 	//ZadanieSzyfrCezara();
-	ZadanieSlinia();
+	//ZadanieSlinia();
+
+	Test1();
 }
 
 
