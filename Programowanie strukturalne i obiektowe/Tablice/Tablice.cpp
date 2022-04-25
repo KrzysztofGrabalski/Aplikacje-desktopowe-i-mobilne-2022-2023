@@ -82,7 +82,41 @@ void Zadanie4()
 	}
 }
 
+/*
+ Napisz program, który uzupełni tablicę liczbami pseudolosowymi,
+ wyswietli jej zawartość oraz znajdzie wartość najwiekszą.
+ */
+
+void Zadanie5()
+{
+	const int ROZMIAR_TABLICY = 5;
+	int tablicaLiczb[ROZMIAR_TABLICY];
+
+	srand(time(NULL));
+
+	for (int i=0; i<ROZMIAR_TABLICY; i++)
+	{
+		//zakres <0; 100>
+		tablicaLiczb[i] = rand() % 101 ; // <0; RAND_MAX)
+	}
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		std::cout << tablicaLiczb[i] << ", ";
+	}
+	std::cout << "\n";
+
+	//szukanie maksymalnej
+	int max = tablicaLiczb[0];
+	for (int i = 1; i < ROZMIAR_TABLICY; i++)
+	{
+		if (tablicaLiczb[i] > max)
+			max = tablicaLiczb[i];
+	}
+	std::cout << "Maksymalna liczba to " << max << "\n";
+}
+
 int main()
 {
-	Zadanie4();
+	Zadanie5();
 }
