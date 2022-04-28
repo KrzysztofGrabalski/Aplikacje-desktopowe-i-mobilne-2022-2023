@@ -116,7 +116,105 @@ void Zadanie5()
 	std::cout << "Maksymalna liczba to " << max << "\n";
 }
 
+/*
+ Napisz program, który dla kolekcji liczb policzy ile jest liczb parzystych.
+ */
+
+void Zadanie6()
+{
+	const int ROZMIAR_TABLICY = 5;
+	int tablicaLiczb[ROZMIAR_TABLICY];
+
+	int zakresDolny = 6;
+	int zakresGorny = 10;
+
+	srand(time(NULL));
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		//zakres <zakresDolny; zakresGorny>
+		tablicaLiczb[i] = rand() % (zakresGorny - zakresDolny + 1) + zakresDolny;
+	}
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		std::cout << tablicaLiczb[i] << ", ";
+	}
+	std::cout << "\n";
+
+	//Tutaj umieszczamy algorytm dla zadania
+	int licznik = 0;
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		if (tablicaLiczb[i] % 2 == 0)
+		//if (tablicaLiczb[i] > 0) // czy liczba jest dodatnia
+			licznik++;
+	}
+	std::cout << "Ilosc liczb parzystych to: " << licznik << "\n";
+}
+
+/*
+  Napisz program, który dla kolekcji liczb policzy srednia artymetyczna tych liczb
+ */
+
+void Zadanie7()
+{
+	const int ROZMIAR_TABLICY = 6;
+	int tablicaLiczb[ROZMIAR_TABLICY];
+
+	int zakresDolny = 6;
+	int zakresGorny = 10;
+
+	srand(time(NULL));
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		//zakres <zakresDolny; zakresGorny>
+		tablicaLiczb[i] = rand() % (zakresGorny - zakresDolny + 1) + zakresDolny;
+	}
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		std::cout << tablicaLiczb[i] << ", ";
+	}
+	std::cout << "\n";
+
+	//Tutaj umieszczamy algorytm dla zadania
+	int suma = 0;
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		suma = suma + tablicaLiczb[i];
+	}
+	float srednia = (suma * 1.0) / ROZMIAR_TABLICY;
+	std::cout << "Srednia arytmetyczna to: " << srednia << "\n";
+}
+
 int main()
 {
-	Zadanie5();
+	Zadanie7();
+}
+
+void Szablon()
+{
+	const int ROZMIAR_TABLICY = 5;
+	int tablicaLiczb[ROZMIAR_TABLICY];
+
+	int zakresDolny = 6;
+	int zakresGorny = 10;
+
+	srand(time(NULL));
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		//zakres <zakresDolny; zakresGorny>
+		tablicaLiczb[i] = rand() % (zakresGorny - zakresDolny + 1) + zakresDolny;
+	}
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		std::cout << tablicaLiczb[i] << ", ";
+	}
+	std::cout << "\n";
+
+	//Tutaj umieszczamy algorytm dla zadania
 }
