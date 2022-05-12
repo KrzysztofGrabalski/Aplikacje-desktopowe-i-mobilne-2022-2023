@@ -72,7 +72,7 @@ void Zadanie4()
 
 	for (int i = 0; i < rozmiar; i++)
 	{
-		std::cout << "Podaj " << i <<" liczbe:\n";
+		std::cout << "Podaj " << i << " liczbe:\n";
 		std::cin >> liczby[i];
 	}
 
@@ -94,10 +94,10 @@ void Zadanie5()
 
 	srand(time(NULL));
 
-	for (int i=0; i<ROZMIAR_TABLICY; i++)
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
 	{
 		//zakres <0; 100>
-		tablicaLiczb[i] = rand() % 101 ; // <0; RAND_MAX)
+		tablicaLiczb[i] = rand() % 101; // <0; RAND_MAX)
 	}
 
 	for (int i = 0; i < ROZMIAR_TABLICY; i++)
@@ -147,7 +147,7 @@ void Zadanie6()
 	for (int i = 0; i < ROZMIAR_TABLICY; i++)
 	{
 		if (tablicaLiczb[i] % 2 == 0)
-		//if (tablicaLiczb[i] > 0) // czy liczba jest dodatnia
+			//if (tablicaLiczb[i] > 0) // czy liczba jest dodatnia
 			licznik++;
 	}
 	std::cout << "Ilosc liczb parzystych to: " << licznik << "\n";
@@ -189,9 +189,61 @@ void Zadanie7()
 	std::cout << "Srednia arytmetyczna to: " << srednia << "\n";
 }
 
+/*
+ Napisz funkcję, która posortuje rosnąco liczby w tablicy.
+ */
+
+void Zadanie8()
+{
+	const int ROZMIAR_TABLICY = 5;
+	int tablicaLiczb[ROZMIAR_TABLICY];
+
+	int zakresDolny = 6;
+	int zakresGorny = 10;
+
+	srand(time(NULL));
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		//zakres <zakresDolny; zakresGorny>
+		tablicaLiczb[i] = rand() % (zakresGorny - zakresDolny + 1) + zakresDolny;
+	}
+
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		std::cout << tablicaLiczb[i] << ", ";
+	}
+	std::cout << "\n";
+
+	//Tutaj umieszczamy algorytm dla zadania
+
+	//sortowanie bąbelkowe
+
+	for (int i = 0; i < ROZMIAR_TABLICY - 1; i++)
+	{
+		for (int j = 0; j < ROZMIAR_TABLICY - 1; j++)
+		{
+			if (tablicaLiczb[j] > tablicaLiczb[j + 1])
+			{
+				int tmp = tablicaLiczb[j];
+				tablicaLiczb[j] = tablicaLiczb[j + 1];
+				tablicaLiczb[j + 1] = tmp;
+			}
+		}
+	}
+
+	std::cout << "Kolekcja po posotrowaniu:\n";
+	for (int i = 0; i < ROZMIAR_TABLICY; i++)
+	{
+		std::cout << tablicaLiczb[i] << ", ";
+	}
+	std::cout << "\n";
+
+}
+
 int main()
 {
-	Zadanie7();
+	Zadanie8();
 }
 
 void Szablon()
