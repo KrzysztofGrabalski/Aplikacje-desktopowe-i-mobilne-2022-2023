@@ -241,9 +241,79 @@ void Zadanie8()
 
 }
 
+/*
+ Zadanie 25
+Napisz program który pobiera ciąg liczb jednocyfrowych od użytkownika (0 kończy ciąg)
+a następnie wyświetla statystyki ile razy wystąpiła dana liczba.
+ */
+
+void Zadanie25()
+{
+	int liczbaUzytkownika;
+	int statystykaTablica[10];
+
+	for (int i = 0; i < 10; i++)
+		statystykaTablica[i] = 0;
+
+	do
+	{
+		std::cout << "Podaj liczbe:\n";
+		std::cin >> liczbaUzytkownika;
+		if (liczbaUzytkownika >= 0 && liczbaUzytkownika <= 9)
+		{
+			statystykaTablica[liczbaUzytkownika]++;
+		}
+		else
+		{
+			if (liczbaUzytkownika < 0)
+				liczbaUzytkownika = -liczbaUzytkownika;
+			int reszta;
+			int liczba = liczbaUzytkownika;
+			do
+			{
+				reszta = liczba % 10;
+				statystykaTablica[reszta]++;
+				liczba = liczba / 10;
+			} while (liczba != 0);
+		}
+
+	} while (liczbaUzytkownika != 0);
+	std::cout << "Statystyka:\n";
+	for (int i = 0; i < 10; i++)
+		std::cout << "Liczb " << i << " podano " << statystykaTablica[i] << "\n";
+}
+
+/*
+ Napisz funkcję, która pobierze od uzytkownika liczbę
+ i sprawdzi czy jest on pierwsza.
+ */
+
+void Zadanie26()
+{
+	int liczbaUzytkownika;
+	std::cout << "Podaj liczbe:\n";
+	std::cin >> liczbaUzytkownika;
+
+	bool jestPierwsza = true;
+	for (int i = 2; i < liczbaUzytkownika; i++)
+	{
+		if (liczbaUzytkownika % i == 0)
+		{
+			jestPierwsza = false;
+		}
+	}
+
+	if (jestPierwsza == true)
+		std::cout << "Liczba " << liczbaUzytkownika << " jest pierwsza\n";
+	else
+		std::cout << "Liczba " << liczbaUzytkownika << " nie jest pierwsza\n";
+
+
+}
+
 int main()
 {
-	Zadanie8();
+	Zadanie26();
 }
 
 void Szablon()
