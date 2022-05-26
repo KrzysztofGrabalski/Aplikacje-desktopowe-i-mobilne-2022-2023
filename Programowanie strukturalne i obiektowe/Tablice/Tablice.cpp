@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-
+#include <math.h>
 /*
 Napisz funkcję w której wczytamy 5 liczb i wyświetlimy je w odwrotnej kolejności.
  */
@@ -295,13 +295,17 @@ void Zadanie26()
 	std::cin >> liczbaUzytkownika;
 
 	bool jestPierwsza = true;
-	for (int i = 2; i < liczbaUzytkownika; i++)
+	// <2 ; liczbaUzytkowanika-1>
+	// <2; pierwiastekKwadratowy(liczbaUzytkownika)>
+	for (int i = 2; i <= sqrt(liczbaUzytkownika); i++)
 	{
 		if (liczbaUzytkownika % i == 0)
 		{
 			jestPierwsza = false;
+			break;
 		}
 	}
+
 
 	if (jestPierwsza == true)
 		std::cout << "Liczba " << liczbaUzytkownika << " jest pierwsza\n";
@@ -311,9 +315,37 @@ void Zadanie26()
 
 }
 
+/*
+Napisz funkcję która wyświtli wszystkie liczby pierwsze
+z zakresu podanego przez użytkownika
+*/
+
+void Zadanie27()
+{
+	int zakresGorny;
+	std::cout << "Podaj zakres gorny:\n";
+	std::cin >> zakresGorny;
+
+	for (int i = 3; i <= zakresGorny; i++)
+	{
+		bool jestPierwsza = true;
+		for (int j = 2; j <= sqrt(i); j++)
+		{
+			if (i % j == 0)
+			{
+				jestPierwsza = false;
+				break;
+			}
+		}
+
+		if (jestPierwsza)
+			std::cout << i << ", ";
+	}
+}
+
 int main()
 {
-	Zadanie26();
+	Zadanie27();
 }
 
 void Szablon()
