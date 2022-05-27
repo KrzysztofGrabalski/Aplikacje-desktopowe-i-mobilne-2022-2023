@@ -326,7 +326,7 @@ void Zadanie27()
 	std::cout << "Podaj zakres gorny:\n";
 	std::cin >> zakresGorny;
 
-	for (int i = 3; i <= zakresGorny; i++)
+	for (int i = 2; i <= zakresGorny; i++)
 	{
 		bool jestPierwsza = true;
 		for (int j = 2; j <= sqrt(i); j++)
