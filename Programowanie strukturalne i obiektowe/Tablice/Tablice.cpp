@@ -306,13 +306,10 @@ void Zadanie26()
 		}
 	}
 
-
 	if (jestPierwsza == true)
 		std::cout << "Liczba " << liczbaUzytkownika << " jest pierwsza\n";
 	else
 		std::cout << "Liczba " << liczbaUzytkownika << " nie jest pierwsza\n";
-
-
 }
 
 /*
@@ -343,9 +340,44 @@ void Zadanie27()
 	}
 }
 
+/*
+Napisz funkcję, która wyznaczy liczby pierwsze
+za pomocą algorytmu sita Eratostenesa
+*/
+
+void Zadanie28()
+{
+	int zakresGorny;
+	std::cout << "Podaj zakres gorny:\n";
+	std::cin >> zakresGorny;
+
+	bool jestPierwsza[2000000000];
+	for (int i = 0; i < 2000000000; i++)
+		jestPierwsza[i] = true;
+
+	double wynikPierwiastka = sqrt(zakresGorny);
+	for (int i = 2; i < wynikPierwiastka; i++)
+	{
+		//if (liczba i nie jest wykreślona)
+		if (jestPierwsza[i] == true)
+		{
+			//nalezy wykreślić wszystkie jej wielokrotności
+			for (int j = i + i; j < zakresGorny; j = j + i)
+			{
+				jestPierwsza[j] = false;
+			}
+		}
+	}
+
+	for (int i = 2; i < zakresGorny; i++)
+		if (jestPierwsza[i])
+			std::cout << i << ", ";
+
+}
+
 int main()
 {
-	Zadanie27();
+	Zadanie28();
 }
 
 void Szablon()
